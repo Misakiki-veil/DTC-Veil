@@ -6,18 +6,18 @@ Owner: Finance / Analytics
 
 Keep the launch financially honest and reconcile every plan with cash, margin, and inventory risk.
 
-## Department Actions
+## Checklist
 
-- Confirm canonical model version
-- Reconcile Claude plan assumptions with current v8 model
-- Lock launch pricing once founder approves
-- Update startup cost assumptions
-- Update initial inventory cash
-- Track cash trough
-- Track SKU-level gross margin
-- Track OTB cash for replenishment
-- Track paid test budget
-- Prepare monthly actual vs model review
+- [ ] Confirm canonical model version
+- [ ] Reconcile Claude plan assumptions with current v8 model
+- [ ] Lock launch pricing once founder approves
+- [ ] Update startup cost assumptions
+- [ ] Update initial inventory cash
+- [ ] Track cash trough
+- [ ] Track SKU-level gross margin
+- [ ] Track OTB cash for replenishment
+- [ ] Track paid test budget
+- [ ] Prepare monthly actual vs model review
 
 ## Assumptions To Reconcile
 
@@ -36,8 +36,7 @@ These must be reconciled before the launch plan is treated as final.
 
 ## Early Merch Finance Rules
 
-- Use absolute inventory floors early, not complex velocity formulas
-- Keep OTB cash gate from day one
-- Reorder decisions must respect cash, lead time, and SKU signal
-- Avoid over-reading weekly data when order volume is low
-
+- [ ] Use absolute inventory floors early, not complex velocity formulas
+- [ ] Keep OTB cash gate from day one
+- [ ] Reorder decisions must respect cash, lead time, and SKU signal
+- [ ] Avoid over-reading weekly data when order volume is low

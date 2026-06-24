@@ -6,18 +6,18 @@ Owner: Operations / Fulfillment / Customer Experience
 
 Make the launch operationally trustworthy: receiving, QC, packing, shipping, returns, and customer communication.
 
-## Department Actions
+## Checklist
 
-- Create receiving checklist
-- Create inventory intake process
-- Define true sellable inventory
-- Create packaging checklist
-- Define shipping promise
-- Create return and exchange policy
-- Create customer service templates
-- Create defect handling process
-- Track reasons for returns or complaints
-- Maintain inventory count after launch
+- [ ] Create receiving checklist
+- [ ] Create inventory intake process
+- [ ] Define true sellable inventory
+- [ ] Create packaging checklist
+- [ ] Define shipping promise
+- [ ] Create return and exchange policy
+- [ ] Create customer service templates
+- [ ] Create defect handling process
+- [ ] Track reasons for returns or complaints
+- [ ] Maintain inventory count after launch
 
 ## True Sellable Inventory
 
@@ -33,7 +33,7 @@ Only sellable units should count as launch inventory.
 
 ## Operations Gate
 
-Gate 5: Inventory intake QC.
+- [ ] Gate 5 passed: Inventory intake QC complete
 
 Before launch:
 
@@ -42,4 +42,3 @@ Before launch:
 - Record true sellable starting point
 - Confirm packaging is ready
 - Confirm shipping workflow is ready
-

@@ -6,18 +6,18 @@ Owner: Creative / Content / Editorial
 
 Create the visual proof that makes brides trust the product before launch.
 
-## Department Actions
+## Checklist
 
-- Create pre-sample content plan using education and styling topics
-- Build product page image checklist
-- Prepare shoot direction for each SKU
-- Plan editorial samples as brand visual assets, not core selling inventory
-- Shoot product images after samples pass quality gate
-- Shoot comparison content: length, styling, fabric feel, lace detail, pearl detail
-- Create Pinterest-friendly assets
-- Create TikTok/Reels concepts
-- Prepare creator seeding briefs
-- Produce visual assets for waitlist and coming-soon pages
+- [ ] Create pre-sample content plan using education and styling topics
+- [ ] Build product page image checklist
+- [ ] Prepare shoot direction for each SKU
+- [ ] Plan editorial samples as brand visual assets, not core selling inventory
+- [ ] Shoot product images after samples pass quality gate
+- [ ] Shoot comparison content: length, styling, fabric feel, lace detail, pearl detail
+- [ ] Create Pinterest-friendly assets
+- [ ] Create TikTok/Reels concepts
+- [ ] Prepare creator seeding briefs
+- [ ] Produce visual assets for waitlist and coming-soon pages
 
 ## Content Before Photography
 
@@ -32,7 +32,6 @@ These can start before final images exist:
 
 ## Creative Gates
 
-- Samples must pass visual and quality check before production content is treated as final
-- Product pages need enough true product visuals before launch
-- Instagram does not need heavy posting before assets exist, but handles should be reserved early
-
+- [ ] Samples passed visual and quality check before final content is used
+- [ ] Product pages have enough true product visuals before launch
+- [ ] Social handles reserved early

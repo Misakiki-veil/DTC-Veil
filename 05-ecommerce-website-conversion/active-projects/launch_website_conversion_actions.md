@@ -6,20 +6,20 @@ Owner: E-commerce / Website / Conversion
 
 Build a buying experience that helps brides choose the right veil and trust the purchase.
 
-## Department Actions
+## Checklist
 
-- Decide website path with Founder: Shopify-native, content-first, or headless
-- Create SEO-friendly URL structure
-- Build coming-soon or waitlist product pages
-- Build product detail page skeletons
-- Add product education: length, material, styling, dress pairing
-- Prepare collection structure
-- Prepare quiz or guide logic if needed
-- Set up email capture
-- Add trust signals
-- Add shipping, returns, and timing clarity
-- Set up analytics tracking
-- QA purchase flow before launch
+- [ ] Decide website path with Founder: Shopify-native, content-first, or headless
+- [ ] Create SEO-friendly URL structure
+- [ ] Build coming-soon or waitlist product pages
+- [ ] Build product detail page skeletons
+- [ ] Add product education: length, material, styling, dress pairing
+- [ ] Prepare collection structure
+- [ ] Prepare quiz or guide logic if needed
+- [ ] Set up email capture
+- [ ] Add trust signals
+- [ ] Add shipping, returns, and timing clarity
+- [ ] Set up analytics tracking
+- [ ] QA purchase flow before launch
 
 ## Product Page Must Answer
 
@@ -32,7 +32,7 @@ Build a buying experience that helps brides choose the right veil and trust the 
 
 ## Website Gate
 
-Gate 4: Full purchase flow QA.
+- [ ] Gate 4 passed: Full purchase flow QA complete
 
 Before launch:
 
@@ -43,4 +43,3 @@ Before launch:
 - Return policy is visible
 - Analytics work
 - Mobile experience is usable
-

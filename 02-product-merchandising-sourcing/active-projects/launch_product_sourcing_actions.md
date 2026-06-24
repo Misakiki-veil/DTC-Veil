@@ -25,22 +25,24 @@ Editorial samples only:
 - Editorial visual samples: 2
 - Total initial order: 69
 
-## Department Actions
+## Checklist
 
-- Confirm sample order by SKU
-- Define quality criteria for each SKU
-- Inspect samples for color, handfeel, drape, lace quality, pearl density, edge finish, comb quality, and photo performance
-- Use sample approval as production go/no-go
-- Confirm factory lead time and reorder lead time
-- Confirm MOQ by SKU
-- Confirm landed cost by SKU
-- Reconcile final cost with finance model
-- Prepare production PO after sample approval
-- Keep a small flexible pool if early demand signals strongly favor one SKU
+- [ ] Confirm sample order by SKU
+- [ ] Define quality criteria for each SKU
+- [ ] Inspect samples for color, handfeel, drape, lace quality, pearl density, edge finish, comb quality, and photo performance
+- [ ] Use sample approval as production go/no-go
+- [ ] Confirm factory lead time and reorder lead time
+- [ ] Confirm MOQ by SKU
+- [ ] Confirm landed cost by SKU
+- [ ] Reconcile final cost with finance model
+- [ ] Prepare production PO after sample approval
+- [ ] Keep a small flexible pool if early demand signals strongly favor one SKU
 
 ## Product Gates
 
 ### Gate 2: Sample Approval
+
+- [ ] Gate 2 passed: Sample approval complete by SKU
 
 Each SKU must pass:
 
@@ -59,6 +61,8 @@ If a SKU fails, choose one:
 
 ### Gate 3: Demand Signal Review
 
+- [ ] Gate 3 passed: Demand signals reviewed before final launch buy split
+
 Before final production split, review:
 
 - Waitlist by SKU
@@ -68,4 +72,3 @@ Before final production split, review:
 - Product page engagement
 
 Use this to adjust the split without changing the locked SKU roster.
-
