@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launch Command Center · Project Board Preview</title>
+  <style>
+    :root {
+      --bg: #f6f8fa;
+      --panel: #ffffff;
+      --line: #d8dee4;
+      --text: #24292f;
+      --muted: #57606a;
+      --blue: #0969da;
+      --green: #1a7f37;
+      --amber: #9a6700;
+      --red: #cf222e;
+      --purple: #8250df;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    header {
+      padding: 24px 28px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 650;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .tab.active {
+      color: var(--text);
+      border-color: #afb8c1;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 22px 24px 32px;
+      overflow-x: auto;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(260px, 1fr));
+      gap: 14px;
+      min-width: 1080px;
+    }
+
+    .column {
+      background: #eef1f4;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 620px;
+      padding: 10px;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 4px 10px;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      background: #d8dee4;
+      border-radius: 999px;
+      padding: 2px 7px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 0 rgba(31, 35, 40, .04);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 650;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .founder { background: #ddf4ff; color: var(--blue); }
+    .product { background: #dafbe1; color: var(--green); }
+    .creative { background: #fbefff; color: var(--purple); }
+    .growth { background: #fff8c5; color: var(--amber); }
+    .ecom { background: #ddf4ff; color: #0550ae; }
+    .ops { background: #ffebe9; color: var(--red); }
+    .finance { background: #f0fff4; color: #116329; }
+    .admin { background: #f6f8fa; color: var(--muted); border-color: var(--line); }
+    .gate { background: #24292f; color: #fff; }
+
+    .progress {
+      height: 7px;
+      background: #eaeef2;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 7px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      background: var(--green);
+      width: var(--p);
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .blocked-note {
+      margin-top: 8px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Launch Command Center</h1>
+    <div class="subtitle">GitHub Project Board preview · 9 launch issues · departments as cards</div>
+    <div class="tabs">
+      <span class="tab active">Board</span>
+      <span class="tab">By Department</span>
+      <span class="tab">By Phase</span>
+      <span class="tab">Blocked</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-label="Launch project board preview">
+      <div class="column">
+        <div class="column-header">Todo <span class="count">5</span></div>
+
+        <article class="card">
+          <div class="card-title">Master Launch Checklist</div>
+          <div class="meta">
+            <span class="label gate">gate</span>
+            <span class="label admin">command center</span>
+          </div>
+          <div class="progress"><span style="--p: 0%"></span></div>
+          <div class="small"><span>0 / 45 done</span><span>#1</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Founder / Brand Owner Checklist</div>
+          <div class="meta"><span class="label founder">founder</span></div>
+          <div class="progress"><span style="--p: 0%"></span></div>
+          <div class="small"><span>0 / 14 done</span><span>#2</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Product / Merchandising / Sourcing Checklist</div>
+          <div class="meta"><span class="label product">product</span><span class="label gate">gate</span></div>
+          <div class="progress"><span style="--p: 0%"></span></div>
+          <div class="small"><span>0 / 12 done</span><span>#3</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Growth / Marketing Checklist</div>
+          <div class="meta"><span class="label growth">growth</span></div>
+          <div class="progress"><span style="--p: 0%"></span></div>
+          <div class="small"><span>0 / 15 done</span><span>#5</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Finance / Analytics Checklist</div>
+          <div class="meta"><span class="label finance">finance</span></div>
+          <div class="progress"><span style="--p: 0%"></span></div>
+          <div class="small"><span>0 / 14 done</span><span>#8</span></div>
+        </article>
+      </div>
+
+      <div class="column">
+        <div class="column-header">In Progress <span class="count">2</span></div>
+
+        <article class="card">
+          <div class="card-title">Creative / Content / Editorial Checklist</div>
+          <div class="meta"><span class="label creative">creative</span></div>
+          <div class="progress"><span style="--p: 20%"></span></div>
+          <div class="small"><span>2 / 13 done</span><span>#4</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">E-commerce / Website / Conversion Checklist</div>
+          <div class="meta"><span class="label ecom">e-commerce</span></div>
+          <div class="progress"><span style="--p: 15%"></span></div>
+          <div class="small"><span>2 / 13 done</span><span>#6</span></div>
+        </article>
+      </div>
+
+      <div class="column">
+        <div class="column-header">Blocked <span class="count">1</span></div>
+
+        <article class="card">
+          <div class="card-title">Admin / Legal / People Checklist</div>
+          <div class="meta"><span class="label admin">admin</span></div>
+          <div class="progress"><span style="--p: 10%"></span></div>
+          <div class="small"><span>1 / 13 done</span><span>#9</span></div>
+          <div class="blocked-note">Waiting on brand/entity decision</div>
+        </article>
+      </div>
+
+      <div class="column">
+        <div class="column-header">Done <span class="count">1</span></div>
+
+        <article class="card">
+          <div class="card-title">Operations / Fulfillment / Customer Experience Checklist</div>
+          <div class="meta"><span class="label ops">operations</span></div>
+          <div class="progress"><span style="--p: 100%"></span></div>
+          <div class="small"><span>11 / 11 done</span><span>#7</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
