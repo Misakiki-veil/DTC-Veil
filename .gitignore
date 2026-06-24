@@ -1,0 +1,12 @@
+.DS_Store
+*.tmp
+*.log
+~$*
+.work/
+.agents/
+.codex/
+.env
+.env.*
+node_modules/
+__pycache__/
+*.pyc

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四大竞品 Veil 产品矩阵工具</title>
+  <style>
+    :root {
+      --ink: #202020;
+      --muted: #666;
+      --line: #ddd;
+      --soft: #f7f4ef;
+      --accent: #876d4c;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: var(--ink); background: #fff; }
+    header { padding: 28px 20px 18px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    main { max-width: 1280px; margin: 0 auto; padding: 22px 20px 44px; }
+    h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.2; }
+    h2 { margin: 32px 0 12px; font-size: 22px; }
+    p { line-height: 1.65; }
+    a { color: #6c5132; }
+    .top { max-width: 1280px; margin: 0 auto; }
+    .small { color: var(--muted); font-size: 14px; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 18px 0 20px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px; }
+    select, input { width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 6px; padding: 9px 10px; font: inherit; background: #fff; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 18px 0 22px; }
+    .summary-card { border: 1px solid var(--line); border-radius: 6px; padding: 14px; background: #fff; }
+    .summary-card strong { display: block; font-size: 18px; margin-bottom: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; align-items: stretch; }
+    .card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; display: flex; flex-direction: column; min-height: 100%; }
+    .image-wrap { aspect-ratio: 4 / 5; background: #f1f1f1; overflow: hidden; }
+    .image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .brand-row { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .brand { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); font-weight: 700; }
+    .rank { font-size: 12px; color: #444; background: #f2eee8; padding: 3px 7px; border-radius: 999px; white-space: nowrap; }
+    .name { font-size: 17px; font-weight: 700; line-height: 1.3; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { border: 1px solid #d8d0c5; background: #fbfaf8; border-radius: 999px; padding: 3px 8px; font-size: 12px; color: #4d4438; }
+    .desc, .lesson { font-size: 14px; line-height: 1.55; }
+    .lesson { border-top: 1px solid #eee; padding-top: 8px; margin-top: auto; }
+    .link { margin-top: 4px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .copy-link { border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 5px 8px; font: inherit; font-size: 13px; cursor: pointer; }
+    .raw-url { display: block; color: var(--muted); font-size: 12px; word-break: break-all; margin-top: 2px; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0 24px; }
+    th, td { border: 1px solid var(--line); padding: 10px 12px; vertical-align: top; text-align: left; }
+    th { background: #f6f6f6; }
+    .note { border-left: 4px solid var(--accent); background: var(--soft); padding: 12px 14px; margin: 14px 0 18px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <p><a href="../../../BRAND_PLAYBOOK_HOME.html">返回首页</a> ｜ <a href="../../../BRAND_PLAYBOOK_FULL.html#competitors">返回完整品牌手册</a></p>
+      <h1>四大竞品 Veil 产品矩阵工具</h1>
+      <p class="small">版本：2026-06-18 ｜ 聚焦 Calily Bridal、Untamed Petals、Twigs & Honey、Grace Loves Lace 的核心 veil 款式。图片来自品牌官网公开产品图链接；销量为公开信号推测，不是后台数据。</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="note">
+      <strong>核心用途：</strong>以后我们讨论首批 SKU、定价、备货和 SEO 页面时，可以直接打开这里对照四家竞品的产品结构。第一版不是完整 100% 全站抓取，而是先放最有参考价值的核心款式。
+    </div>
+
+    <section class="summary">
+      <div class="summary-card">
+        <strong>Calily Bridal</strong>
+        <span class="small">Veil-first DTC。Best sellers 证明 simple / pearl / lace / mantilla 是主结构。</span>
+      </div>
+      <div class="summary-card">
+        <strong>Untamed Petals</strong>
+        <span class="small">Modern bride lifestyle commerce。Simple veil 走量，mini / party / jewelry 提供年轻化入口。</span>
+      </div>
+      <div class="summary-card">
+        <strong>Twigs & Honey</strong>
+        <span class="small">Mature accessory house。Simple tulle 是底盘，lace / juliet / mantilla 拉高品牌和价格上限。</span>
+      </div>
+      <div class="summary-card">
+        <strong>Grace Loves Lace</strong>
+        <span class="small">Gown-led bridal brand。Veil 多在 $350-$630，提供高价锚点和“配婚纱完成造型”的参考。</span>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="filters">
+      <div>
+        <label for="brandFilter">品牌</label>
+        <select id="brandFilter">
+          <option value="all">全部品牌</option>
+        </select>
+      </div>
+      <div>
+        <label for="typeFilter">款式类型</label>
+        <select id="typeFilter">
+          <option value="all">全部类型</option>
+        </select>
+      </div>
+      <div>
+        <label for="roleFilter">产品角色</label>
+        <select id="roleFilter">
+          <option value="all">全部角色</option>
+        </select>
+      </div>
+      <div>
+        <label for="searchInput">搜索名称 / 描述</label>
+        <input id="searchInput" type="search" placeholder="例如 pearl, mantilla, simple">
+      </div>
+    </section>
+
+    <p class="small" id="countLine"></p>
+    <section class="grid" id="productGrid"></section>
+
+    <h2>快速结论</h2>
+    <table>
+      <tr>
+        <th>判断</th>
+        <th>三家共同信号</th>
+        <th>我们的启发</th>
+      </tr>
+      <tr>
+        <td>走量底盘</td>
+        <td>Simple / plain / tulle / cathedral 或 long veil 都在前排，价格多落在 $119-$185 左右。</td>
+        <td>首批必须有一款主推 simple long / cathedral veil，库存占比应最高。</td>
+      </tr>
+      <tr>
+        <td>升级走量</td>
+        <td>Pearl veil 在三家里都很重要，价格比 simple 款高一点，但仍然容易被大众接受。</td>
+        <td>Pearl 是我们最应该做的第二核心款，适合提高 AOV 和内容表现。</td>
+      </tr>
+      <tr>
+        <td>审美款</td>
+        <td>Lace / mantilla / juliet / floral 款能拉高品牌，但价格高、销量不一定最大。</td>
+        <td>首批少量做，重点用于品牌视觉、SEO 子页和高客单测试。</td>
+      </tr>
+      <tr>
+        <td>内容款</td>
+        <td>Mini veil、birdcage、bow veil、sparkle veil 更适合社媒和 second look 场景。</td>
+        <td>可少量加入或先拍样品，不一定首批大量备货。</td>
+      </tr>
+      <tr>
+        <td>高价锚点</td>
+        <td>Grace Loves Lace 的 veil 多在 $350-$630，说明 gown-led 品牌可以把 veil 作为造型完成件卖到更高价格。</td>
+        <td>我们首发 simple 不应盲目高价，但可以用 lace / mantilla / pearl / embroidered 款建立未来高客单空间。</td>
+      </tr>
+    </table>
+  </main>
+
+  <script>
+    const products = [
+      {
+        brand: "Calily Bridal",
+        name: "The Mia Veil / Simple Plain Classic Veil",
+        price: "$119",
+        type: "Simple / Cathedral",
+        role: "走量底盘",
+        rank: "Best Seller #1",
+        image: "https://calilybridal.com/cdn/shop/files/Calily_Mia_1.jpg?v=1757099333&width=720",
+        url: "https://calilybridal.com/en-us/products/single-tier-simple-wedding-veil-cathedral-length",
+        description: "Single tier cathedral simple plain veil. Calily Best Sellers 第一位，价格最低之一，最像它的核心走量款。",
+        lesson: "证明 simple cathedral veil 是最大需求入口。我们需要一款高级但不复杂的 signature simple veil。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "The Sera Veil / Pearl Cathedral Veil",
+        price: "$139",
+        type: "Pearl / Cathedral",
+        role: "升级走量",
+        rank: "Best Seller 前排",
+        image: "https://calilybridal.com/cdn/shop/files/000002_1.jpg?v=1757149158&width=720",
+        url: "https://calilybridal.com/en-us/products/single-tier-pearl-wedding-veil-cathedral-length",
+        description: "Single tier pearl veil, cathedral length. 只比 simple 款贵一点，但视觉更强。",
+        lesson: "Pearl 是最适合第一批做升级款的方向，既有差异又不会太小众。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "The Daphne Veil / Lace Cathedral Veil",
+        price: "$189",
+        type: "Lace / Cathedral",
+        role: "审美升级",
+        rank: "Best Seller 前排",
+        image: "https://calilybridal.com/cdn/shop/files/CAL01488.jpg?v=1769997361&width=720",
+        url: "https://calilybridal.com/en-us/products/single-tier-lace-wedding-veil-cathedral-length",
+        description: "Single tier lace veil, cathedral length. 比 simple / pearl 更有传统 bridal 审美。",
+        lesson: "Lace 款可以提高品牌完整度，但库存应低于 simple 和 pearl。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "The Juliette Veil / Two Tier Lace Veil",
+        price: "$229",
+        type: "Lace / Two Tier",
+        role: "仪式感升级",
+        rank: "Best Seller 前排",
+        image: "https://calilybridal.com/cdn/shop/files/MTR2597.jpg?v=1768966303&width=720",
+        url: "https://calilybridal.com/en-us/products/two-tier-lace-wedding-veil-cathedral-length",
+        description: "Two tier lace cathedral veil. 比单层 lace 更有仪式感和 blusher 需求。",
+        lesson: "两层款适合做少量高客单测试，不适合一开始过多备货。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "The Rosalia Veil / Mantilla Chantilly Lace Veil",
+        price: "$219",
+        type: "Mantilla / Lace",
+        role: "风格款",
+        rank: "Best Seller 前排",
+        image: "https://calilybridal.com/cdn/shop/files/MTR9592.jpg?v=1752063787&width=720",
+        url: "https://calilybridal.com/en-us/products/mantilla-french-chantilly-lace-veil-single-tier-cathedral-length",
+        description: "Mantilla chantilly lace cathedral veil. Calily 近期明显在推 mantilla。",
+        lesson: "Mantilla 有高搜索和高审美价值，但用户更小众，首批应少量。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "The Tessa Veil / Simple Plain Two Tier Veil",
+        price: "$135",
+        type: "Simple / Two Tier",
+        role: "走量变体",
+        rank: "Best Seller 中前排",
+        image: "https://calilybridal.com/cdn/shop/files/MTR2850.jpg?v=1757155457&width=720",
+        url: "https://calilybridal.com/en-us/products/simple-plain-classic-veil-cathedral-length-two-tier",
+        description: "Two tier version of simple plain cathedral veil.",
+        lesson: "同一个 simple 底盘可以拆一层 / 两层，提高选择但不增加太多设计复杂度。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "Pearl Beaded Edge Veil",
+        price: "$169-$189",
+        type: "Pearl Edge",
+        role: "升级变体",
+        rank: "Best Seller 中排",
+        image: "https://calilybridal.com/cdn/shop/files/MTR0743.jpg?v=1752063790&width=720",
+        url: "https://calilybridal.com/en-us/products/pearl-beaded-edge-veil-single-tier-cathedral-length",
+        description: "Pearl beaded edge cathedral veil. 比满天星 pearl 更克制。",
+        lesson: "Pearl 可以拆成 scattered pearl 和 pearl edge 两条设计路线。"
+      },
+      {
+        brand: "Calily Bridal",
+        name: "Satin Edge Veil",
+        price: "$149-$179",
+        type: "Satin Edge",
+        role: "干净结构款",
+        rank: "Best Seller 中排",
+        image: "https://calilybridal.com/cdn/shop/files/MTR0290_1.jpg?v=1757294066&width=720",
+        url: "https://calilybridal.com/en-us/products/satin-edge-veil-single-tier-cathedral-length",
+        description: "Satin edge single tier cathedral veil. 更适合 satin / minimalist gown。",
+        lesson: "结构边缘款可以作为 simple 的现代升级，但首批不一定重备。"
+      },
+
+      {
+        brand: "Untamed Petals",
+        name: "Day Dream Veil",
+        price: "$178",
+        type: "Simple / Long",
+        role: "走量底盘",
+        rank: "Best Seller, 25 reviews",
+        image: "https://untamedpetals.com/cdn/shop/files/DayDreamVeil_180_600x.jpg?v=1775571121",
+        url: "https://untamedpetals.com/products/daydream",
+        description: "Simple long veil with many length options. Untamed Veils 页第一位，Best Seller 标签和 review 数都最强。",
+        lesson: "现代品牌也需要非常稳的 simple veil 承接大众需求。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Jackson Veil",
+        price: "$168",
+        type: "Simple / Long",
+        role: "走量底盘",
+        rank: "Best Seller, 20 reviews",
+        image: "https://untamedpetals.com/cdn/shop/files/JacksonVeil_110_600x.jpg?v=1775497300",
+        url: "https://untamedpetals.com/products/jackson",
+        description: "Another simple veil with broad length options. 和 Day Dream 共同构成 Untamed 的基础走量层。",
+        lesson: "同一类型可用不同 tulle/edge/coverage 做两个基础款，但首批要避免 SKU 过碎。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Juliette Mantilla Veil",
+        price: "$478",
+        type: "Mantilla",
+        role: "风格款",
+        rank: "Best Seller, 1 review",
+        image: "https://untamedpetals.com/cdn/shop/files/JulietteMantillaVeil_2_600x.jpg?v=1725908298",
+        url: "https://untamedpetals.com/products/juliette-mantilla",
+        description: "Mantilla veil with strong bridal styling identity. Best Seller 标签但 review 少。",
+        lesson: "Mantilla 可以做品牌审美款，但销量不一定超过 simple。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Laurence Lace Veil",
+        price: "$435",
+        type: "Lace",
+        role: "审美升级",
+        rank: "前排",
+        image: "https://untamedpetals.com/cdn/shop/files/109A2214_websize_600x.jpg?v=1745439679",
+        url: "https://untamedpetals.com/products/laurence-lace-veil",
+        description: "Lace veil with higher price and traditional bridal appeal.",
+        lesson: "高价 lace 更适合形象和高客单，不是走量底盘。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Pauline Veil",
+        price: "$295",
+        type: "Soft Statement",
+        role: "中价审美款",
+        rank: "前排",
+        image: "https://untamedpetals.com/cdn/shop/files/109A2443_websize_02f258df-30e8-412f-a554-ae40778624d1_600x.jpg?v=1745439676",
+        url: "https://untamedpetals.com/products/pauline-veil-1",
+        description: "Mid-price veil, likely used as a style-forward but still accessible option.",
+        lesson: "我们可以保留 1 个 $280-$330 的中价视觉款。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Isabelle Rosette Veil",
+        price: "$398",
+        type: "Floral / Rosette",
+        role: "内容款",
+        rank: "1 review",
+        image: "https://untamedpetals.com/cdn/shop/files/IsabelleRosetteVeil_19_600x.jpg?v=1725907614",
+        url: "https://untamedpetals.com/products/isabelle-rosette-veil",
+        description: "Rosette floral veil, more visual and content-friendly.",
+        lesson: "Floral/rosette 更适合做社媒视觉，不要大量备货。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Perry Bow Veil",
+        price: "$260-$320",
+        type: "Bow",
+        role: "内容款",
+        rank: "前排",
+        image: "https://untamedpetals.com/cdn/shop/files/PerryBowVeil_1_600x.jpg?v=1755707927",
+        url: "https://untamedpetals.com/products/perry-bow-veil",
+        description: "Bow veil, strongly aligned with party bride / second look styling.",
+        lesson: "Bow 是 Gen Z bride 可考虑的第二阶段方向。"
+      },
+      {
+        brand: "Untamed Petals",
+        name: "Delphine Veil",
+        price: "$978",
+        type: "High Statement",
+        role: "品牌形象款",
+        rank: "高价前排",
+        image: "https://untamedpetals.com/cdn/shop/files/DelphineVeil_47_600x.jpg?v=1772820635",
+        url: "https://untamedpetals.com/products/delphine-veil",
+        description: "High-ticket statement veil. More brand ceiling than volume driver.",
+        lesson: "高价款可以抬高品牌感，但首批不适合重库存。"
+      },
+
+      {
+        brand: "Twigs & Honey",
+        name: "Simple Cathedral or Chapel Length Veil - Style #357",
+        price: "From $150",
+        type: "Simple / Cathedral",
+        role: "走量底盘",
+        rank: "核心 SEO 款",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/357a.jpg?v=1481312887&width=600",
+        url: "https://www.twigsandhoney.com/products/simple-cathedral-length-veil-style-357",
+        description: "Simple cathedral / chapel veil. Long-term basic product with exact SEO title.",
+        lesson: "产品标题直接写 simple cathedral / chapel，比纯情绪命名更利于 SEO。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Simple and Sheer Single Layer Long Veil - Style #221",
+        price: "From $160",
+        type: "Simple / Single Layer",
+        role: "走量底盘",
+        rank: "核心 SEO 款",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/221a.jpg?v=1506280240&width=600",
+        url: "https://www.twigsandhoney.com/products/simple-and-sheer-single-layer-long-veil-style-221",
+        description: "Simple sheer single layer long veil. Strong match for simple long veil searches.",
+        lesson: "simple + sheer + single layer + long 是非常完整的搜索型命名。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Silk Tulle Alencon Lace Trim Veil - Style #223",
+        price: "Mid-high",
+        type: "Lace Trim",
+        role: "审美升级",
+        rank: "前排传统款",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/222b_1.jpg?v=1481312987&width=600",
+        url: "https://www.twigsandhoney.com/products/silk-tulle-alencon-lace-trim-veil-style-223",
+        description: "Lace trim silk tulle veil with classic bridal materials.",
+        lesson: "高级材料词 silk tulle / lace trim 可以明显提高品牌质感。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Pearl Chapel Train Veil - Style #968",
+        price: "Upgrade",
+        type: "Pearl",
+        role: "升级走量",
+        rank: "Pearl 类目代表",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/968-bridal-pearl-chapel-floor-length-cathedral-veil_0066-MAIN_390c4fe2-ddd3-406a-9c8b-10207266e681.jpg?v=1594959956&width=1500",
+        url: "https://www.twigsandhoney.com/products/pearl-chapel-train-veil-style-968",
+        description: "Pearl chapel train veil. Pearl is an independent SEO and upgrade category.",
+        lesson: "Pearl should be its own collection/page, not hidden inside embellished. "
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Wide Cathedral Veil with Extra Long Blusher - Style #668",
+        price: "$265",
+        type: "Cathedral / Blusher",
+        role: "仪式感升级",
+        rank: "强关键词款",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/668-cathedral-bridal-veil-with-blusher2_MAIN.jpg?v=1544689892&width=1500",
+        url: "https://www.twigsandhoney.com/products/wide-cathedral-veil-with-extra-long-blusher-style-668",
+        description: "Wide cathedral veil with extra long blusher. High intent title.",
+        lesson: "wide / cathedral / blusher 是明确的购买决策词。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Merrow Edge Simple Veil - Style #2464",
+        price: "$185",
+        type: "Simple / Edge Detail",
+        role: "走量变体",
+        rank: "Trending 款",
+        image: "https://www.twigsandhoney.com/cdn/shop/files/2464-merrow-edge-veil-26inch-blusher-fingertip-tulle-twigsandhoney-a-MAIN.jpg?v=1704932755&width=1500",
+        url: "https://www.twigsandhoney.com/products/merrow-edge-simple-veil-style-2464",
+        description: "Simple veil with merrow edge. Basic but with a clear finish detail.",
+        lesson: "简单款可以靠边缘工艺做差异，不必加很多装饰。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Wide Mantilla Veil with French Lace Trim - Style #2640",
+        price: "High",
+        type: "Mantilla / Lace",
+        role: "风格款",
+        rank: "Mantilla SEO 款",
+        image: "https://www.twigsandhoney.com/cdn/shop/files/2640-wide-french-lace-edge-mantilla-wedding-bridal-veil-tulle-twigsandhoney.jpg?v=1769195222&width=1500",
+        url: "https://www.twigsandhoney.com/products/wide-mantilla-veil-with-french-lace-trim-style-2640",
+        description: "Wide mantilla veil with French lace trim. Strong high-intent mantilla SEO.",
+        lesson: "Mantilla 页应明确 lace trim / French lace / wide 等细节。"
+      },
+      {
+        brand: "Twigs & Honey",
+        name: "Mini Tulle Veil with Pearls - Style #212",
+        price: "Lower",
+        type: "Mini / Pearl",
+        role: "内容款",
+        rank: "Mini 类目代表",
+        image: "https://www.twigsandhoney.com/cdn/shop/products/212l.jpg?v=1594959295&width=1500",
+        url: "https://www.twigsandhoney.com/products/mini-tulle-veil-with-pearls-style-212-ready-to-ship",
+        description: "Mini tulle veil with pearls. More second look / party / retro than ceremony.",
+        lesson: "Mini veil 很适合内容，但主库存仍应让位给 simple long。"
+      },
+
+      {
+        brand: "Grace Loves Lace",
+        name: "Pierlot Veil",
+        price: "$540",
+        type: "Embroidered Edge",
+        role: "高价锚点",
+        rank: "Veils 页前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/PierlotVeil_02_Front_740x.jpg?v=1775016855",
+        url: "https://graceloveslace.com/products/pierlot-veil",
+        description: "Embroidered edge wedding veil. Grace 前排高价款，强调工艺和 gown styling 完成感。",
+        lesson: "高价不是靠 simple tulle，而是靠 embroidered edge、品牌信任和婚纱搭配场景。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Lumi Veil",
+        price: "$535",
+        type: "Lace Edge / Cathedral",
+        role: "高价锚点",
+        rank: "Veils 页前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/grace-loves-lace-portugal-lumi-veil-1_740x.jpg?v=1772062094",
+        url: "https://graceloveslace.com/products/lumi-veil",
+        description: "Lace edge cathedral wedding veil. 典型 Grace Loves Lace 的 romantic / gown-led 配饰逻辑。",
+        lesson: "Lace edge cathedral 可以作为未来高客单方向，但首批要控制库存风险。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Stevie Veil",
+        price: "$545",
+        type: "Long Floral",
+        role: "审美升级",
+        rank: "Veils 页前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/Stevie_Veil_01_740x.jpg?v=1754624188",
+        url: "https://graceloveslace.com/products/stevie-veil",
+        description: "Long floral wedding veil. 视觉更强，适合 romantic / boho / garden bride。",
+        lesson: "Floral 款能拉高品牌视觉，但更适合少量样品或小批量 capsule。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Ophelia Veil",
+        price: "$495",
+        type: "Mantilla",
+        role: "风格款",
+        rank: "Veils 页前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/OpheliaVeil_01_Front_740x.jpg?v=1770600408",
+        url: "https://graceloveslace.com/products/ophelia-veil",
+        description: "Mantilla wedding veil. 和 Calily / Untamed / Twigs 都共同验证 mantilla 是高意图风格款。",
+        lesson: "Mantilla 可以做审美和高客单，但不是首批最大备货款。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Gabriela Veil",
+        price: "$455",
+        type: "Silk Ivory",
+        role: "高级基础款",
+        rank: "Veils 页前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/grace-loves-lace.shop_.veils-and-hair.gabriela-veil.maxzoom_046_740x.jpg?v=1709874290",
+        url: "https://graceloveslace.com/products/gabriela-veil",
+        description: "Silk ivory wedding veil. 更偏高级材质和婚纱搭配，而不是低价基础款。",
+        lesson: "如果我们未来要上探价格，材质体感和 gown pairing 必须讲清楚。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Pearly Long Veil",
+        price: "$440",
+        type: "Pearl / Cathedral",
+        role: "升级走量",
+        rank: "Pearl 代表款",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/grace-loves-lace.shop_.veils-and-hair.pearly-long-veil_306-scaled_740x.jpg?v=1709874314",
+        url: "https://graceloveslace.com/products/pearly-long-veil",
+        description: "Pearl cathedral wedding veil. Pearl 在高价品牌里也成立，说明 pearl 是跨价格带升级款。",
+        lesson: "Pearl 款既能做 $139-$178，也能做 $400+，关键在 placement、材质、拍摄和品牌信任。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Lunaria Drop Veil",
+        price: "$415",
+        type: "Drop / Tulle",
+        role: "仪式感升级",
+        rank: "Veils 页中前排",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/LunariaVeil_01_Front_740x.jpg?v=1766012355",
+        url: "https://graceloveslace.com/products/lunaria-drop-veil",
+        description: "Tulle drop wedding veil. 更柔和、更仪式感，适合 clean gown。",
+        lesson: "Drop veil 可以是 simple 的高阶版本，但用户教育比普通 cathedral 更重要。"
+      },
+      {
+        brand: "Grace Loves Lace",
+        name: "Grace Veil",
+        price: "$350",
+        type: "Long Tulle",
+        role: "高级基础款",
+        rank: "相对入门价",
+        image: "https://cdn.shopify.com/s/files/1/0593/3547/5405/files/grace-loves-lace-inca_740x.jpg?v=1740607386",
+        url: "https://graceloveslace.com/products/grace-veil",
+        description: "Long tulle wedding veil. Grace 体系里的相对入门价，但仍然显著高于 Calily / Untamed simple 款。",
+        lesson: "同样是 long tulle，品牌和搭配语境会显著抬高价格锚点。"
+      }
+    ];
+
+    const brandFilter = document.getElementById("brandFilter");
+    const typeFilter = document.getElementById("typeFilter");
+    const roleFilter = document.getElementById("roleFilter");
+    const searchInput = document.getElementById("searchInput");
+    const grid = document.getElementById("productGrid");
+    const countLine = document.getElementById("countLine");
+
+    function fillSelect(select, values) {
+      values.forEach(value => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      });
+    }
+
+    fillSelect(brandFilter, [...new Set(products.map(p => p.brand))]);
+    fillSelect(typeFilter, [...new Set(products.map(p => p.type))].sort());
+    fillSelect(roleFilter, [...new Set(products.map(p => p.role))].sort());
+
+    function render() {
+      const brand = brandFilter.value;
+      const type = typeFilter.value;
+      const role = roleFilter.value;
+      const query = searchInput.value.trim().toLowerCase();
+
+      const filtered = products.filter(product => {
+        const haystack = [product.brand, product.name, product.type, product.role, product.description, product.lesson].join(" ").toLowerCase();
+        return (brand === "all" || product.brand === brand)
+          && (type === "all" || product.type === type)
+          && (role === "all" || product.role === role)
+          && (!query || haystack.includes(query));
+      });
+
+      countLine.textContent = `当前显示 ${filtered.length} / ${products.length} 个产品。`;
+      grid.innerHTML = filtered.map(product => `
+        <article class="card">
+          <a class="image-wrap" href="${product.url}">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+          </a>
+          <div class="body">
+            <div class="brand-row">
+              <span class="brand">${product.brand}</span>
+              <span class="rank">${product.rank}</span>
+            </div>
+            <div class="name">${product.name}</div>
+            <div class="meta">${product.price}</div>
+            <div class="tags">
+              <span class="tag">${product.type}</span>
+              <span class="tag">${product.role}</span>
+            </div>
+            <div class="desc">${product.description}</div>
+            <div class="lesson"><strong>我们学什么：</strong>${product.lesson}</div>
+            <div class="link">
+              <a href="${product.url}">打开原产品页</a>
+              <button class="copy-link" type="button" data-url="${product.url}">复制链接</button>
+            </div>
+            <span class="raw-url">${product.url}</span>
+          </div>
+        </article>
+      `).join("");
+
+      grid.querySelectorAll(".copy-link").forEach(button => {
+        button.addEventListener("click", async () => {
+          const url = button.dataset.url;
+          try {
+            await navigator.clipboard.writeText(url);
+            button.textContent = "已复制";
+          } catch (error) {
+            button.textContent = "复制失败";
+          }
+          window.setTimeout(() => {
+            button.textContent = "复制链接";
+          }, 1400);
+        });
+      });
+    }
+
+    [brandFilter, typeFilter, roleFilter, searchInput].forEach(control => {
+      control.addEventListener("input", render);
+      control.addEventListener("change", render);
+    });
+    render();
+  </script>
+</body>
+</html>

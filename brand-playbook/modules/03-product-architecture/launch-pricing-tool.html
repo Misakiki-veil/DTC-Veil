@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>首批 Core SKU 定价决策工具</title>
+  <style>
+    :root {
+      --ink: #222;
+      --muted: #6c625d;
+      --line: #e2d8d0;
+      --soft: #f3ece5;
+      --paper: #fffdfb;
+      --accent: #7a4b3b;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.58; max-width: 1280px; margin: 0 auto; padding: 34px 22px 80px; color: var(--ink); background: #faf8f5; }
+    h1 { font-size: 32px; margin-bottom: 8px; line-height: 1.2; }
+    h2 { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); }
+    h3 { margin: 18px 0 8px; }
+    a { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; background: white; font-size: 14px; }
+    th, td { border: 1px solid var(--line); padding: 9px; vertical-align: top; }
+    th { background: var(--soft); text-align: left; }
+    tr:nth-child(even) td { background: var(--paper); }
+    input, select { width: 100%; min-width: 72px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; font: inherit; background: white; }
+    input[type="number"] { text-align: right; }
+    .note { background: var(--soft); padding: 16px; border-radius: 8px; }
+    .small { color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 16px 0; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .card strong { display: block; font-size: 18px; margin-bottom: 4px; }
+    .pill { display: inline-block; border-radius: 999px; padding: 3px 9px; font-size: 12px; background: var(--soft); margin: 2px 4px 2px 0; }
+    .good { color: #276738; font-weight: 700; }
+    .warn { color: #9a5a00; font-weight: 700; }
+    .bad { color: #9a2f2f; font-weight: 700; }
+    .right { text-align: right; }
+    .price-col { min-width: 96px; }
+    .sticky-actions { position: sticky; bottom: 0; background: rgba(250,248,245,.96); border-top: 1px solid var(--line); padding: 12px 0; margin-top: 18px; }
+    button { border: 1px solid var(--line); border-radius: 6px; background: white; padding: 8px 12px; font: inherit; cursor: pointer; color: var(--ink); }
+    button:hover { border-color: var(--accent); }
+    .wide { min-width: 1180px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: white; }
+  </style>
+</head>
+<body>
+  <p><a href="../../../BRAND_PLAYBOOK_HOME.html">返回主页</a> · <a href="../../../BRAND_PLAYBOOK_FULL.html#product">返回产品架构</a> · <a href="launch-sku-list.html">返回首批产品矩阵</a></p>
+
+  <h1>首批 Core SKU 定价决策工具</h1>
+  <p class="note"><strong>用途：</strong>这个工具用来把“成本底线、目标毛利、竞品锚点、产品角色和用户感知价值”放在一起看。它不是最终定价答案，而是帮我们避免两个极端：太低导致品牌廉价化，太高导致新品牌无法解释。</p>
+
+  <h2>定价原则</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>不是最低价</strong>
+      <span class="small">供应链优势优先转化成更好的毛利、拍摄、包装、补货速度和试错空间，而不是全部让利。</span>
+    </div>
+    <div class="card">
+      <strong>Simple 是信任入口</strong>
+      <span class="small">Simple Cathedral 不建议比 Calily 贵一倍，除非图片、材料、服务和搭配指导都能支撑。</span>
+    </div>
+    <div class="card">
+      <strong>升级款拉 AOV</strong>
+      <span class="small">Pearl、lace、mantilla 可以承担更高价格，但需要页面解释“为什么值”。</span>
+    </div>
+    <div class="card">
+      <strong>促销要有底线</strong>
+      <span class="small">首发折扣不能低到破坏后续价格心智；促销底价至少守住贡献毛利。</span>
+    </div>
+  </div>
+
+  <h2>全局假设</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>支付/平台费</th>
+        <td><input id="feeRate" type="number" value="3.0" step="0.1"> <span class="small">%</span></td>
+        <th>退货/损耗预留</th>
+        <td><input id="returnRate" type="number" value="3.0" step="0.5"> <span class="small">% of price</span></td>
+        <th>基础目标毛利</th>
+        <td><input id="targetMargin" type="number" value="70" step="1"> <span class="small">%</span></td>
+      </tr>
+      <tr>
+        <th>首发折扣</th>
+        <td><input id="launchDiscount" type="number" value="10" step="1"> <span class="small">%</span></td>
+        <th>最低贡献毛利</th>
+        <td><input id="floorMargin" type="number" value="58" step="1"> <span class="small">%</span></td>
+        <th>价格取整</th>
+        <td>
+          <select id="rounding">
+            <option value="9">结尾 9</option>
+            <option value="8">结尾 8</option>
+            <option value="5">结尾 5</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>SKU 定价表</h2>
+  <p class="small">你可以直接改成本、包装、运费补贴、目标毛利和首发价。工具会自动计算最低可接受价、建议价格和促销后毛利。支付/平台费和退货/损耗按成交价比例扣除，所以会随首发价和折扣自动变化。</p>
+  <div class="table-wrap">
+    <table class="wide" id="pricingTable">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>角色</th>
+          <th>竞品锚点</th>
+          <th>生产成本</th>
+          <th>包装</th>
+          <th>运费补贴</th>
+          <th>其他</th>
+          <th>目标毛利</th>
+          <th>总成本</th>
+          <th>折后平台费</th>
+          <th>折后损耗预留</th>
+          <th>成本底线价</th>
+          <th>建议价</th>
+          <th class="price-col">首发价</th>
+          <th>折后价</th>
+          <th>折后毛利</th>
+          <th>判断</th>
+        </tr>
+      </thead>
+      <tbody id="pricingBody"></tbody>
+    </table>
+  </div>
+
+  <div class="sticky-actions">
+    <button id="resetBtn" type="button">恢复默认假设</button>
+    <button id="saveBtn" type="button">保存当前版本</button>
+    <button id="loadBtn" type="button">读取已保存版本</button>
+    <button id="copyBtn" type="button">复制当前表格摘要</button>
+    <button id="downloadBtn" type="button">下载当前表格 CSV</button>
+    <span id="copyStatus" class="small"></span>
+  </div>
+
+  <h2>竞品价格锚点</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>品牌</th>
+        <th>参考区间</th>
+        <th>给我们的意义</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Calily Bridal</td>
+        <td>Simple $119-$135；Pearl $139；Lace/Mantilla $189-$229</td>
+        <td>低到中价 DTC 锚点。我们的 simple 不宜一上来贵它一倍。</td>
+      </tr>
+      <tr>
+        <td>Untamed Petals</td>
+        <td>Simple $168-$178；Lace/Mantilla $435-$478；statement 更高</td>
+        <td>现代新娘品牌可以用更强视觉和 lifestyle 语境支撑更高价。</td>
+      </tr>
+      <tr>
+        <td>Twigs & Honey</td>
+        <td>Simple from $150-$185；Blusher/edge $265；lace/statement 可到 $900+</td>
+        <td>产品深度和材料叙事能拉高上限，但不是新品牌第一天照抄。</td>
+      </tr>
+      <tr>
+        <td>Grace Loves Lace</td>
+        <td>Veils 多在 $350-$630</td>
+        <td>Gown-led 品牌提供高价锚点，说明 veil 可以作为完整造型卖高价。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>当前建议</h2>
+  <ul>
+    <li><strong>Simple Cathedral：</strong>建议先站在 $168-$198，而不是 $230+。它是信任入口。</li>
+    <li><strong>Pearl Scatter：</strong>建议 $228-$268。Pearl 有搜索和竞品验证，可以承担升级。</li>
+    <li><strong>Affordable Lace Mantilla：</strong>建议 $238-$298。不要和 premium lace cathedral 抢同一价格层。</li>
+    <li><strong>Premium Lace Cathedral：</strong>建议 $298-$388。它负责高端锚点，不需要最大库存。</li>
+    <li><strong>Satin Edge Mid-Length：</strong>建议 $148-$198。它是短款/clean/city hall 入口。</li>
+    <li><strong>Pearl Puff Short：</strong>建议 $128-$178。它是内容和 second look 款，价格不能太重。</li>
+  </ul>
+
+  <script>
+    const defaults = [
+      {
+        sku: "Simple Cathedral Veil",
+        role: "信任入口 / 最大走量",
+        anchor: "Calily $119-$135; Untamed $168-$178; Twigs from $150",
+        production: 10,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 68,
+        launch: 129
+      },
+      {
+        sku: "Pearl Scatter Cathedral Veil",
+        role: "升级走量",
+        anchor: "Calily $139; Grace pearl $440; pearl keyword strong",
+        production: 30,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 70,
+        launch: 199
+      },
+      {
+        sku: "Affordable Lace Mantilla Veil",
+        role: "Mantilla SEO / 风格款",
+        anchor: "Calily $219; Untamed $478; Grace $435-$495",
+        production: 45,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 68,
+        launch: 269
+      },
+      {
+        sku: "Premium Lace Cathedral Veil",
+        role: "高端 lace / 价格锚点",
+        anchor: "Calily lace $189-$229; Grace lace $535+",
+        production: 60,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 70,
+        launch: 389
+      },
+      {
+        sku: "Satin Edge Mid-Length Veil",
+        role: "短款 / clean / city hall",
+        anchor: "short/fingertip keyword 5K; edge terms 500",
+        production: 20,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 66,
+        launch: 169
+      },
+      {
+        sku: "Pearl Puff Short Veil",
+        role: "second look / Gen Z 内容款",
+        anchor: "mini/short demand; pearl detail supports upgrade",
+        production: 25,
+        packaging: 5,
+        shipping: 10,
+        other: 1,
+        margin: 66,
+        launch: 166
+      }
+    ];
+
+    const body = document.getElementById("pricingBody");
+    const feeRate = document.getElementById("feeRate");
+    const returnRate = document.getElementById("returnRate");
+    const targetMargin = document.getElementById("targetMargin");
+    const launchDiscount = document.getElementById("launchDiscount");
+    const floorMargin = document.getElementById("floorMargin");
+    const rounding = document.getElementById("rounding");
+    const copyStatus = document.getElementById("copyStatus");
+    const storageKey = "modern-bridal-launch-pricing-v3-confirmed-defaults";
+    let rows = structuredClone(defaults);
+
+    function roundPrice(value) {
+      const mode = Number(rounding.value);
+      if (mode === 9) return Math.max(9, Math.ceil((value - 9) / 10) * 10 + 9);
+      if (mode === 8) return Math.max(8, Math.ceil((value - 8) / 10) * 10 + 8);
+      return Math.max(5, Math.ceil(value / 5) * 5);
+    }
+
+    function money(value) {
+      return "$" + Math.round(value).toLocaleString("en-US");
+    }
+
+    function calc(row) {
+      const fee = Number(feeRate.value) / 100;
+      const reserve = Number(returnRate.value) / 100;
+      const variableRate = fee + reserve;
+      const target = (Number(row.margin || targetMargin.value)) / 100;
+      const floor = Number(floorMargin.value) / 100;
+      const cost = Number(row.production) + Number(row.packaging) + Number(row.shipping) + Number(row.other);
+      const floorPrice = cost / (1 - floor - variableRate);
+      const suggested = roundPrice(cost / (1 - target - variableRate));
+      const launch = Number(row.launch);
+      const discountPrice = launch * (1 - Number(launchDiscount.value) / 100);
+      const feeAmount = discountPrice * fee;
+      const reserveAmount = discountPrice * reserve;
+      const contributionMargin = (discountPrice * (1 - variableRate) - cost) / discountPrice;
+      return { cost, feeAmount, reserveAmount, floorPrice, suggested, launch, discountPrice, contributionMargin };
+    }
+
+    function statusText(metric) {
+      const floor = Number(floorMargin.value) / 100;
+      if (metric.contributionMargin >= floor + 0.08) return ["健康", "good"];
+      if (metric.contributionMargin >= floor) return ["可接受", "warn"];
+      return ["低于底线", "bad"];
+    }
+
+    function currentState() {
+      return {
+        savedAt: new Date().toISOString(),
+        rows,
+        assumptions: {
+          feeRate: feeRate.value,
+          returnRate: returnRate.value,
+          targetMargin: targetMargin.value,
+          launchDiscount: launchDiscount.value,
+          floorMargin: floorMargin.value,
+          rounding: rounding.value
+        }
+      };
+    }
+
+    function applyState(state) {
+      if (!state || !Array.isArray(state.rows)) return false;
+      rows = structuredClone(state.rows);
+      if (state.assumptions) {
+        feeRate.value = state.assumptions.feeRate ?? feeRate.value;
+        returnRate.value = state.assumptions.returnRate ?? returnRate.value;
+        targetMargin.value = state.assumptions.targetMargin ?? targetMargin.value;
+        launchDiscount.value = state.assumptions.launchDiscount ?? launchDiscount.value;
+        floorMargin.value = state.assumptions.floorMargin ?? floorMargin.value;
+        rounding.value = state.assumptions.rounding ?? rounding.value;
+      }
+      render();
+      return true;
+    }
+
+    function saveState(message = "已保存当前定价版本") {
+      localStorage.setItem(storageKey, JSON.stringify(currentState()));
+      copyStatus.textContent = message;
+      setTimeout(() => copyStatus.textContent = "", 1800);
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) {
+        copyStatus.textContent = "还没有保存过版本";
+        setTimeout(() => copyStatus.textContent = "", 1800);
+        return;
+      }
+      try {
+        const state = JSON.parse(raw);
+        applyState(state);
+        const date = state.savedAt ? new Date(state.savedAt).toLocaleString() : "";
+        copyStatus.textContent = date ? `已读取保存版本：${date}` : "已读取保存版本";
+      } catch (error) {
+        copyStatus.textContent = "保存版本读取失败";
+      }
+      setTimeout(() => copyStatus.textContent = "", 2200);
+    }
+
+    function tableRows() {
+      return rows.map(row => {
+        const metric = calc(row);
+        const [label] = statusText(metric);
+        return {
+          SKU: row.sku,
+          role: row.role,
+          competitorAnchor: row.anchor,
+          productionCost: Number(row.production),
+          packaging: Number(row.packaging),
+          shippingSubsidy: Number(row.shipping),
+          otherCost: Number(row.other),
+          targetMarginPercent: Number(row.margin || targetMargin.value),
+          fixedTotalCost: Math.round(metric.cost),
+          discountedPlatformFee: Math.round(metric.feeAmount),
+          discountedReturnLossReserve: Math.round(metric.reserveAmount),
+          costFloorPrice: Math.round(metric.floorPrice),
+          suggestedPrice: Math.round(metric.suggested),
+          launchPrice: Math.round(metric.launch),
+          discountedPrice: Math.round(metric.discountPrice),
+          discountedContributionMarginPercent: Math.round(metric.contributionMargin * 100),
+          status: label
+        };
+      });
+    }
+
+    function csvEscape(value) {
+      const text = String(value ?? "");
+      return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+    }
+
+    function downloadCsv() {
+      const headers = [
+        "SKU",
+        "角色",
+        "竞品锚点",
+        "生产成本",
+        "包装",
+        "运费补贴",
+        "其他",
+        "目标毛利%",
+        "固定总成本",
+        "折后平台费",
+        "折后退货/损耗预留",
+        "成本底线价",
+        "建议价",
+        "首发价",
+        "折后价",
+        "折后贡献毛利%",
+        "判断"
+      ];
+      const data = tableRows().map(row => [
+        row.SKU,
+        row.role,
+        row.competitorAnchor,
+        row.productionCost,
+        row.packaging,
+        row.shippingSubsidy,
+        row.otherCost,
+        row.targetMarginPercent,
+        row.fixedTotalCost,
+        row.discountedPlatformFee,
+        row.discountedReturnLossReserve,
+        row.costFloorPrice,
+        row.suggestedPrice,
+        row.launchPrice,
+        row.discountedPrice,
+        row.discountedContributionMarginPercent,
+        row.status
+      ]);
+      const assumptions = [
+        ["全局假设", ""],
+        ["支付/平台费%", feeRate.value],
+        ["退货/损耗预留%", returnRate.value],
+        ["基础目标毛利%", targetMargin.value],
+        ["首发折扣%", launchDiscount.value],
+        ["最低贡献毛利%", floorMargin.value],
+        ["价格取整", rounding.options[rounding.selectedIndex].text],
+        [],
+      ];
+      const csv = [
+        ...assumptions,
+        headers,
+        ...data
+      ].map(line => line.map(csvEscape).join(",")).join("\n");
+      const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `launch-pricing-table-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      copyStatus.textContent = "已下载当前定价表格";
+      setTimeout(() => copyStatus.textContent = "", 1800);
+    }
+
+    function render() {
+      body.innerHTML = rows.map((row, index) => {
+        const metric = calc(row);
+        const [label, cls] = statusText(metric);
+        return `
+          <tr>
+            <td><strong>${row.sku}</strong></td>
+            <td>${row.role}</td>
+            <td>${row.anchor}</td>
+            <td><input type="number" data-i="${index}" data-k="production" value="${row.production}" step="1"></td>
+            <td><input type="number" data-i="${index}" data-k="packaging" value="${row.packaging}" step="1"></td>
+            <td><input type="number" data-i="${index}" data-k="shipping" value="${row.shipping}" step="1"></td>
+            <td><input type="number" data-i="${index}" data-k="other" value="${row.other}" step="1"></td>
+            <td><input type="number" data-i="${index}" data-k="margin" value="${row.margin}" step="1"></td>
+            <td class="right">${money(metric.cost)}</td>
+            <td class="right">${money(metric.feeAmount)}</td>
+            <td class="right">${money(metric.reserveAmount)}</td>
+            <td class="right">${money(metric.floorPrice)}</td>
+            <td class="right"><strong>${money(metric.suggested)}</strong></td>
+            <td><input type="number" data-i="${index}" data-k="launch" value="${row.launch}" step="1"></td>
+            <td class="right">${money(metric.discountPrice)}</td>
+            <td class="right">${Math.round(metric.contributionMargin * 100)}%</td>
+            <td class="${cls}">${label}</td>
+          </tr>
+        `;
+      }).join("");
+
+      body.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", event => {
+          const i = Number(event.target.dataset.i);
+          const k = event.target.dataset.k;
+          rows[i][k] = Number(event.target.value);
+          localStorage.setItem(storageKey, JSON.stringify(currentState()));
+          render();
+        });
+      });
+    }
+
+    [feeRate, returnRate, targetMargin, launchDiscount, floorMargin, rounding].forEach(control => {
+      control.addEventListener("input", () => {
+        localStorage.setItem(storageKey, JSON.stringify(currentState()));
+        render();
+      });
+      control.addEventListener("change", () => {
+        localStorage.setItem(storageKey, JSON.stringify(currentState()));
+        render();
+      });
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      rows = structuredClone(defaults);
+      feeRate.value = 3.0;
+      returnRate.value = 3.0;
+      targetMargin.value = 70;
+      launchDiscount.value = 10;
+      floorMargin.value = 58;
+      rounding.value = "9";
+      render();
+      saveState("已恢复并保存确认版默认数据");
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", () => saveState());
+    document.getElementById("loadBtn").addEventListener("click", loadState);
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const lines = rows.map(row => {
+        const metric = calc(row);
+        return `${row.sku}: cost ${money(metric.cost)}, suggested ${money(metric.suggested)}, launch ${money(metric.launch)}, discount margin ${Math.round(metric.contributionMargin * 100)}%`;
+      });
+      try {
+        await navigator.clipboard.writeText(lines.join("\\n"));
+        copyStatus.textContent = "已复制当前定价摘要";
+      } catch (error) {
+        copyStatus.textContent = "复制失败，可手动选择表格内容";
+      }
+      setTimeout(() => copyStatus.textContent = "", 1800);
+    });
+
+    document.getElementById("downloadBtn").addEventListener("click", downloadCsv);
+
+    const savedState = localStorage.getItem(storageKey);
+    if (savedState) {
+      try {
+        applyState(JSON.parse(savedState));
+      } catch (error) {
+        render();
+      }
+    } else {
+      render();
+    }
+  </script>
+</body>
+</html>
