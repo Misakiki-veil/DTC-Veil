@@ -1,4 +1,4 @@
-# DTC Veil Brand Workspace
+# Sovelle Bridal Workspace
 
 This repository is the shared working folder for the modern bridal veil DTC project.
 
