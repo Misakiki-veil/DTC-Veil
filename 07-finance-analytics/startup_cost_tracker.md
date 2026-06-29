@@ -26,9 +26,13 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 
 | Date | Item | Vendor | Category | Amount | Status | Receipt Saved | Notes |
 |---|---|---|---|---:|---|---|---|
-| 2026-06-29 | LLC formation filing | LegalZoom / State of NJ | Legal & Filing | $128.5 | Paid | TBD | Replace TBD with actual amount paid. |
+| 2026-06-29 | LLC formation filing | LegalZoom / State of NJ | Legal & Filing | $128.5 | Paid | TBD |  Borrow from Yudi Zhang. |
 | 2026-06-29 | EIN application | IRS | Legal & Filing | $0.00 | Complete | Not needed | IRS EIN should be free. |
 | 2026-06-29 | DBA / Alternate Name filing | State of NJ | Legal & Filing | TBD | Planned | TBD | Use only if applying for DBA / alternate business name. |
+| 2026-06-29 | Domain | Cloudfare | Software | $10.46 | Paid | TBD | Borrow from Yudi Zhang. |
+| 2026-06-29 | Trade Mark Application | USPTO | Legal & Filing | $350.00 | Paid | TBD | Borrow from Yudi Zhang. |
+
+
 
 ## Categories
 
