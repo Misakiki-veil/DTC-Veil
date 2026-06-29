@@ -18,7 +18,7 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 
 | Metric | Amount |
 |---|---:|
-| Total Paid | $128.5 |
+| Total Paid | $488.96 |
 | Total Pending | $0.00 |
 | Total Startup Costs Logged | $0.00 |
 
