@@ -18,7 +18,7 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 
 | Metric | Amount |
 |---|---:|
-| Total Paid | $0.00 |
+| Total Paid | $128.5 |
 | Total Pending | $0.00 |
 | Total Startup Costs Logged | $0.00 |
 
@@ -26,8 +26,8 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 
 | Date | Item | Vendor | Category | Amount | Status | Receipt Saved | Notes |
 |---|---|---|---|---:|---|---|---|
-| 2026-06-29 | LLC formation filing | LegalZoom / State of NJ | Legal & Filing | TBD | Pending / Paid | TBD | Replace TBD with actual amount paid. |
-| 2026-06-29 | EIN application | IRS | Legal & Filing | $0.00 | Pending / Complete | Not needed | IRS EIN should be free. |
+| 2026-06-29 | LLC formation filing | LegalZoom / State of NJ | Legal & Filing | $128.5 | Paid | TBD | Replace TBD with actual amount paid. |
+| 2026-06-29 | EIN application | IRS | Legal & Filing | $0.00 | Complete | Not needed | IRS EIN should be free. |
 | 2026-06-29 | DBA / Alternate Name filing | State of NJ | Legal & Filing | TBD | Planned | TBD | Use only if applying for DBA / alternate business name. |
 
 ## Categories
