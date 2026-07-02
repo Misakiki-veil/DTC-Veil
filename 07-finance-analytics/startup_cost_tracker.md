@@ -18,7 +18,7 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 
 | Metric | Amount |
 |---|---:|
-| Total Paid | $488.96 |
+| Total Paid | $541.46 |
 | Total Pending | $0.00 |
 | Total Startup Costs Logged | $0.00 |
 
@@ -31,7 +31,7 @@ Store actual receipts/invoices separately in a private folder such as Google Dri
 | 2026-06-29 | DBA / Alternate Name filing | State of NJ | Legal & Filing | TBD | Planned | TBD | Use only if applying for DBA / alternate business name. |
 | 2026-06-29 | Domain | Cloudfare | Software | $10.46 | Paid | TBD | Borrow from Yudi Zhang. |
 | 2026-06-29 | Trade Mark Application | USPTO | Legal & Filing | $350.00 | Paid | TBD | Borrow from Yudi Zhang. |
-
+| 2026-06-29 | Trade Mark Application | DBA | Legal & Filing | $52.50 | Paid | TBD | Borrow from Yudi Zhang. |
 
 
 ## Categories
